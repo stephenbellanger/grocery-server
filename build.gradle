@@ -1,10 +1,14 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.3.61'
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
 }
 
 group 'org.example'
 version '1.0-SNAPSHOT'
 apply plugin: 'application'
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
 
 repositories {
     mavenCentral()
@@ -12,9 +16,9 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    implementation 'io.javalin:javalin:3.8.0'
-    implementation "org.slf4j:slf4j-simple:1.8.0-beta4"
-    implementation 'org.litote.kmongo:kmongo-rxjava2:4.0.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'org.springframework.boot:spring-boot-dependencies:2.0.5.RELEASE'
 }
 
 compileKotlin {
@@ -24,7 +28,7 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-mainClassName = 'com.grocery.server.router.ApiRouter'
+mainClassName = 'com.grocery.server.ApiRouter'
 task stage {
     dependsOn installDist
 }
