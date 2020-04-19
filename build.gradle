@@ -4,6 +4,7 @@ plugins {
 
 group 'org.example'
 version '1.0-SNAPSHOT'
+apply plugin: 'application'
 
 repositories {
     mavenCentral()
@@ -23,7 +24,7 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-mainClassName = 'com.grocery.server.router.ApiRouter.kt'
+mainClassName = 'com.grocery.server.router.ApiRouter'
 task stage {
     dependsOn installDist
 }
